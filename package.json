@@ -19,5 +19,5 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
-  "homepage": "https://aakashbhusal7.github.io/react-hooks"
+  "homepage": "https://aakashbhusal7.github.io/react-work-assignment"
 }
