@@ -25,6 +25,7 @@ const App = () => {
 		setUsers2([...users2,user])
 	}
 
+		// not needed for project(only create needed)
 	const deleteUser = id => {
 		setEditing(false)
 
@@ -56,7 +57,7 @@ const App = () => {
 
 	
 
-	 const results = !searchTerm
+	 let results = !searchTerm
 		? users
 		: users.filter(user =>
 			user.country.toLowerCase().includes(searchTerm.toLocaleLowerCase()) ||
@@ -65,14 +66,15 @@ const App = () => {
 			
 		);
 
-		const results1= !searchTermPhone
-		?users2
-		:users2.filter(user=>
+		results= !searchTermPhone
+		?results
+		:results.filter(user=>
 			user.phoneNumber.toLowerCase().includes(searchTermPhone.toLocaleLowerCase())
 			
 		);
-
 	return (
+		
+		
 		<div className="container">
 			<h1 align="center">My Sample React Application</h1>
 			<div className="flex-row">
@@ -108,7 +110,7 @@ const App = () => {
 						value={searchTermPhone}
 						onChange={handleChangePhone}
 					/>
-					<UserTable users={results} users2={results1} editRow={editRow} deleteUser={deleteUser} />
+					<UserTable users={results} users2={results} editRow={editRow} deleteUser={deleteUser} />
 				</div>
 			</div>
 		</div>
