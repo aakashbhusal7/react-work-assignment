@@ -13,35 +13,13 @@ const App = () => {
 
 	// Setting state
 	const [users, setUsers] = useState(usersData)
-	const[users2,setUsers2]=useState(usersData)
 	const [currentUser, setCurrentUser] = useState(initialFormState)
-	const[currentUser2,setCurrentUser2]=useState(initialFormState)
-	const [editing, setEditing] = useState(false)
+	
 
 	// CRUD operations
 	const addUser = user => {
 		user.id = users.length + 1
 		setUsers([...users, user])
-		setUsers2([...users2,user])
-	}
-
-		// not needed for project(only create needed)
-	const deleteUser = id => {
-		setEditing(false)
-
-		setUsers(users.filter(user => user.id !== id))
-	}
-
-	const updateUser = (id, updatedUser) => {
-		setEditing(false)
-
-		setUsers(users.map(user => (user.id === id ? updatedUser : user)))
-	}
-
-	const editRow = user => {
-		setEditing(true)
-
-		setCurrentUser({ id: user.id, name: user.name, username: user.username })
 	}
 
 	const [searchTerm, setSearchTerm] = React.useState("");
@@ -54,8 +32,6 @@ const App = () => {
 		setSearchTermPhone(event.target.value);
 		
 	};
-
-	
 
 	 let results = !searchTerm
 		? users
@@ -70,28 +46,16 @@ const App = () => {
 			
 		);
 	return (
-		
-		
 		<div className="container">
 			<h1 align="center">My Sample React Application</h1>
 			<div className="flex-row">
 				<div className="flex-large">
-					{editing ? (
-						<Fragment>
-							<h2>Edit user</h2>
-							<EditUserForm
-								editing={editing}
-								setEditing={setEditing}
-								currentUser={currentUser}
-								updateUser={updateUser}
-							/>
-						</Fragment>
-					) : (
+				
 							<Fragment>
 								<h2>Add user</h2>
 								<AddUserForm addUser={addUser} />
 							</Fragment>
-						)}
+						
 				</div>
 				<div className="flex-large">
 					<h2>View users</h2>
@@ -107,7 +71,7 @@ const App = () => {
 						value={searchTermPhone}
 						onChange={handleChangePhone}
 					/>
-					<UserTable users={results} users2={results} editRow={editRow} deleteUser={deleteUser} />
+					<UserTable users={results} />
 				</div>
 			</div>
 		</div>
