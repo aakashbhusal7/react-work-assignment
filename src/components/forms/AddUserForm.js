@@ -6,7 +6,6 @@ const AddUserForm = props => {
 
 	const handleInputChange = event => {
 		const { name, value } = event.target
-
 		setUser({ ...user, [name]: value })
 	}
 

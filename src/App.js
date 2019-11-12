@@ -13,13 +13,16 @@ const App = () => {
 
 	// Setting state
 	const [users, setUsers] = useState(usersData)
+	const[users2,setUsers2]=useState(usersData)
 	const [currentUser, setCurrentUser] = useState(initialFormState)
+	const[currentUser2,setCurrentUser2]=useState(initialFormState)
 	const [editing, setEditing] = useState(false)
 
 	// CRUD operations
 	const addUser = user => {
 		user.id = users.length + 1
 		setUsers([...users, user])
+		setUsers2([...users2,user])
 	}
 
 	const deleteUser = id => {
@@ -63,8 +66,8 @@ const App = () => {
 		);
 
 		const results1= !searchTermPhone
-		?users
-		:users.filter(user=>
+		?users2
+		:users2.filter(user=>
 			user.phoneNumber.toLowerCase().includes(searchTermPhone.toLocaleLowerCase())
 			
 		);
@@ -105,7 +108,7 @@ const App = () => {
 						value={searchTermPhone}
 						onChange={handleChangePhone}
 					/>
-					<UserTable users={results}  editRow={editRow} deleteUser={deleteUser} />
+					<UserTable users={results} users2={results1} editRow={editRow} deleteUser={deleteUser} />
 				</div>
 			</div>
 		</div>
