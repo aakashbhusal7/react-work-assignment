@@ -60,10 +60,7 @@ const App = () => {
 	 let results = !searchTerm
 		? users
 		: users.filter(user =>
-			user.country.toLowerCase().includes(searchTerm.toLocaleLowerCase()) ||
-			user.name.toLowerCase().includes(searchTerm.toLocaleLowerCase()) ||
-			user.phoneNumber.toLowerCase().includes(searchTerm.toLocaleLowerCase())
-			
+			user.country.toLowerCase().includes(searchTerm.toLocaleLowerCase()) 
 		);
 
 		results= !searchTermPhone
